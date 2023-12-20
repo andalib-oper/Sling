@@ -9,9 +9,14 @@ export default function ImageComp() {
     useEffect(() => {
       // Fetch the image from your Node.js server
       axios
-        .get("YOUR_NODE_SERVER_IMAGE_URL")
+        .get(
+          `https://sling-backend-masumpeacock-gmailcom.vercel.app/api/get-image`
+        )
         .then((response) => {
-          setImageUrl(response.data.imageUrl);
+          console.log("response", response?.data?.data?.image);
+          setImageUrl(
+            `data:image/png;base64,${response?.data?.data?.image}`
+          );
         })
         .catch((error) => {
           console.error("Error fetching image:", error);
