@@ -24,12 +24,6 @@ export default function ImageComp() {
         console.error("Error fetching image:", error);
       });
   }, []);
-const imageStyle = {
-  width: `200px`,
-  height: `250px`,
-  borderRadius: "50%",
-  objectFit: "cover", // Ensures the image covers the entire container
-};
   return (
     <div
       className="flex h-[532px] w-[532px]" //👈 here is Tailwind
