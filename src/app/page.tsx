@@ -1,10 +1,10 @@
-"use client"
-import ImageComp from "./image";
+"use client";
+import ImageMain from "./image";
 
 const Home = () => {
   return (
     <div>
-      <ImageComp/>
+      <ImageMain />
     </div>
   );
 };

@@ -1,35 +1,23 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios';
-import { io } from "socket.io-client";
+"use client";
+import React, { useState, useEffect } from "react";
+import ImageComp from "./component/ImageComp";
 
-export default function ImageComp() {
-  const [imageUrl, setImageUrl] = useState(
-    "https://images.unsplash.com/photo-1500964757637-c85e8a162699?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHNjZW5lcnl8ZW58MHx8MHx8fDA="
+export default function ImageMain() {
+  return (
+    <div
+      className="w-full overflow-hidden relative"
+      // style={{ height: "30vh" }}
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignSelf: "center",
+        alignContent: "center",
+        alignItems: "center",
+        backgroundColor: "#9747ff",
+        height: "100vh",
+      }}
+    >
+      <ImageComp />
+    </div>
   );
-  const socket = io("https://sling-backend.onrender.com");
-
-  socket.on("imageUploaded", (data) => {
-    setImageUrl(`data:image/png;base64,${data.data.image}`)
-  })
-
-  useEffect(() => {
-    axios
-      .get(
-        `https://sling-backend.onrender.com/api/get-image`
-      )
-      .then((response) => {
-        console.log("response", response?.data?.data?.image);
-        setImageUrl(
-          `data:image/png;base64,${response?.data?.data?.image}`
-        );
-      })
-      .catch((error) => {
-        console.error("Error fetching image:", error);
-      });
-  }, []);
-
-  return <div>
-    <p>Andalib</p>
-    {imageUrl && <img src={imageUrl} alt="Captured" />}
-  </div>;
 }
