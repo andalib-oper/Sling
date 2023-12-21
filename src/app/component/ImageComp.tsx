@@ -18,7 +18,7 @@ export default function ImageComp() {
       .get(`https://sling-backend.onrender.com/api/get-image`)
       .then((response) => {
         console.log("response", response?.data?.data?.image);
-        setImageUrl(`data:image/png;base64,${response?.data?.data?.image}`);
+        // setImageUrl(`data:image/png;base64,${response?.data?.data?.image}`);
       })
       .catch((error) => {
         console.error("Error fetching image:", error);
